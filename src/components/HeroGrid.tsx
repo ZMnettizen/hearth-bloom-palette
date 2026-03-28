@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
-import project1 from "@/assets/project1.jpg";
-import project2 from "@/assets/project2.jpg";
-import project3 from "@/assets/project3.jpg";
+import RestaurantPreview from "./previews/RestaurantPreview";
+import EcommercePreview from "./previews/EcommercePreview";
+import TradesPreview from "./previews/TradesPreview";
 
 const projects = [
-  { img: project1, title: "Restaurant Website", client: "Fine Dining Co." },
-  { img: project2, title: "Retail E-Commerce", client: "Urban Outfitters" },
-  { img: project3, title: "Trades & Services", client: "ProPlumb Solutions" },
+  { title: "Restaurant Website", client: "Fine Dining Co.", Preview: RestaurantPreview },
+  { title: "Retail E-Commerce", client: "Urban Outfitters", Preview: EcommercePreview },
+  { title: "Trades & Services", client: "ProPlumb Solutions", Preview: TradesPreview },
 ];
 
 const HeroGrid = () => {
@@ -27,11 +27,10 @@ const HeroGrid = () => {
               transition={{ delay: i * 0.2, duration: 0.6 }}
               onClick={() => setSelected(i)}
             >
-              <img
-                src={p.img}
-                alt={p.title}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-              />
+              {/* Live mini preview */}
+              <div className="w-full h-full pointer-events-none">
+                <p.Preview />
+              </div>
               <div className="absolute inset-0 bg-foreground/30 group-hover:bg-foreground/50 transition-colors duration-300" />
               <div className="absolute bottom-0 w-full p-6 text-center">
                 <h3 className="font-display text-xl font-semibold text-primary-foreground drop-shadow-lg">
@@ -66,7 +65,7 @@ const HeroGrid = () => {
         </div>
       </section>
 
-      {/* Modal */}
+      {/* Modal - full live preview */}
       <AnimatePresence>
         {selected !== null && (
           <motion.div
@@ -77,31 +76,39 @@ const HeroGrid = () => {
             onClick={() => setSelected(null)}
           >
             <motion.div
-              className="relative w-[90vw] max-w-2xl h-[70vh] rounded-xl overflow-hidden shadow-2xl"
+              className="relative w-[90vw] max-w-3xl h-[75vh] rounded-xl overflow-hidden shadow-2xl border border-border bg-background"
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <button
-                onClick={() => setSelected(null)}
-                className="absolute top-4 right-4 z-10 bg-foreground/60 text-primary-foreground rounded-full p-2 hover:bg-foreground/80 transition-colors"
-                aria-label="Close preview"
-              >
-                <X size={20} />
-              </button>
-              <img
-                src={projects[selected].img}
-                alt={projects[selected].title}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute bottom-0 w-full p-6 bg-gradient-to-t from-foreground/80 to-transparent">
-                <h3 className="font-display text-2xl font-bold text-primary-foreground">
-                  {projects[selected].title}
-                </h3>
-                <p className="font-body text-primary-foreground/80 mt-1">
-                  Client: {projects[selected].client}
-                </p>
+              {/* Browser chrome bar */}
+              <div className="flex items-center gap-2 px-4 py-2.5 bg-muted border-b border-border">
+                <div className="flex gap-1.5">
+                  <div className="w-3 h-3 rounded-full bg-red-400" />
+                  <div className="w-3 h-3 rounded-full bg-yellow-400" />
+                  <div className="w-3 h-3 rounded-full bg-green-400" />
+                </div>
+                <div className="flex-1 mx-4">
+                  <div className="bg-background rounded-md px-3 py-1 text-xs text-muted-foreground text-center border border-border">
+                    {projects[selected].client.toLowerCase().replace(/\s+/g, '') + '.co.za'}
+                  </div>
+                </div>
+                <button
+                  onClick={() => setSelected(null)}
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  aria-label="Close preview"
+                >
+                  <X size={16} />
+                </button>
+              </div>
+
+              {/* Live website preview */}
+              <div className="w-full h-[calc(100%-40px)] overflow-auto">
+                {(() => {
+                  const P = projects[selected].Preview;
+                  return <P />;
+                })()}
               </div>
             </motion.div>
           </motion.div>

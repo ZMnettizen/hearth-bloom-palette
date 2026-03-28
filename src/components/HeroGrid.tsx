@@ -77,10 +77,10 @@ const HeroGrid = () => {
             onClick={() => setSelected(null)}
           >
             <motion.div
-              className="relative bg-card rounded-lg overflow-hidden max-w-4xl w-full max-h-[90vh] shadow-2xl"
-              initial={{ scale: 0.9, opacity: 0 }}
+              className="relative w-full h-full overflow-hidden"
+              initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
+              exit={{ scale: 0.95, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
             >
               <button
@@ -93,13 +93,13 @@ const HeroGrid = () => {
               <img
                 src={projects[selected].img}
                 alt={projects[selected].title}
-                className="w-full h-auto max-h-[70vh] object-contain"
+                className="w-full h-full object-cover"
               />
-              <div className="p-6">
-                <h3 className="font-display text-2xl font-bold text-card-foreground">
+              <div className="absolute bottom-0 w-full p-6 bg-gradient-to-t from-foreground/80 to-transparent">
+                <h3 className="font-display text-2xl font-bold text-primary-foreground">
                   {projects[selected].title}
                 </h3>
-                <p className="font-body text-muted-foreground mt-1">
+                <p className="font-body text-primary-foreground/80 mt-1">
                   Client: {projects[selected].client}
                 </p>
               </div>

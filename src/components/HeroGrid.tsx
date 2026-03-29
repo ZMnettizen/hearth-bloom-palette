@@ -28,10 +28,10 @@ const HeroGrid = () => {
               onClick={() => setSelected(i)}
             >
               {/* Live mini preview */}
-              <div className="w-full h-full pointer-events-none">
+              <div className="w-full h-full pointer-events-none scale-[1.15] origin-top">
                 <p.Preview />
               </div>
-              <div className="absolute inset-0 bg-foreground/30 group-hover:bg-foreground/50 transition-colors duration-300" />
+              <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/10 to-transparent group-hover:from-foreground/70 group-hover:via-foreground/20 transition-all duration-300" />
               <div className="absolute bottom-0 w-full p-6 text-center">
                 <h3 className="font-display text-xl font-semibold text-primary-foreground drop-shadow-lg">
                   {p.title}

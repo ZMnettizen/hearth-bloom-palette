@@ -8,7 +8,7 @@ const products = [
 ];
 
 const EcommercePreview = () => (
-  <div className="w-full h-full bg-[#faf9f7] text-[#2a2a2a] overflow-hidden flex flex-col" style={{ fontFamily: "'Helvetica Neue', sans-serif" }}>
+  <div className="w-full bg-[#faf9f7] text-[#2a2a2a] overflow-hidden flex flex-col" style={{ fontFamily: "'Helvetica Neue', sans-serif" }}>
     {/* Top bar */}
     <div className="bg-[#2a2a2a] text-white text-[10px] text-center py-1.5 tracking-widest uppercase">
       Free shipping on orders over $150

@@ -17,11 +17,11 @@ const HeroGrid = () => {
   return (
     <>
       <section id="projects" className="relative">
-        <div className="grid grid-cols-1 md:grid-cols-3 h-auto md:h-[85vh] max-w-[1280px] min-w-0 mx-auto">
+        <div className="flex flex-col max-w-[1280px] min-w-0 mx-auto">
           {projects.map((p, i) => (
             <motion.div
               key={p.title}
-              className="relative overflow-hidden cursor-pointer group h-[50vh] md:h-full"
+              className="relative overflow-hidden cursor-pointer group h-[60vh]"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: i * 0.2, duration: 0.6 }}

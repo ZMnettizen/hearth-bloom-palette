@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
-import RestaurantPreview from "./previews/RestaurantPreview";
+import MzansiMeatsPreview from "./previews/MzansiMeatsPreview";
 import EcommercePreview from "./previews/EcommercePreview";
-import TradesPreview from "./previews/TradesPreview";
+import NonnasPreview from "./previews/NonnasPreview";
 
 const projects = [
-  { title: "Restaurant Website", client: "Fine Dining Co.", Preview: RestaurantPreview },
+  { title: "Mzansi Meats", client: "Inkabi Meats", Preview: MzansiMeatsPreview },
   { title: "Retail E-Commerce", client: "Urban Outfitters", Preview: EcommercePreview },
-  { title: "Trades & Services", client: "ProPlumb Solutions", Preview: TradesPreview },
+  { title: "Nonna's Italian Kitchen", client: "Nonna's Restaurant", Preview: NonnasPreview },
 ];
 
 const HeroGrid = () => {

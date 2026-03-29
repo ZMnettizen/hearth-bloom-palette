@@ -1,5 +1,5 @@
 const RestaurantPreview = () => (
-  <div className="w-full h-full bg-[#1a1a1a] text-white overflow-hidden flex flex-col" style={{ fontFamily: "'Georgia', serif" }}>
+  <div className="w-full bg-[#1a1a1a] text-white overflow-hidden flex flex-col" style={{ fontFamily: "'Georgia', serif" }}>
     {/* Nav */}
     <nav className="flex items-center justify-between px-6 py-4 bg-[#111]">
       <span className="text-xl font-bold tracking-wider text-[#d4a853]">LA MAISON</span>

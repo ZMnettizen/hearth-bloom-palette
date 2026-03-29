@@ -1,7 +1,7 @@
 import { Phone, Mail, MapPin, CheckCircle, Shield, Clock } from "lucide-react";
 
 const TradesPreview = () => (
-  <div className="w-full h-full bg-white text-[#1a1a2e] overflow-hidden flex flex-col" style={{ fontFamily: "'Arial', sans-serif" }}>
+  <div className="w-full bg-white text-[#1a1a2e] overflow-hidden flex flex-col" style={{ fontFamily: "'Arial', sans-serif" }}>
     {/* Top contact bar */}
     <div className="bg-[#0d47a1] text-white flex items-center justify-between px-6 py-2 text-[10px]">
       <div className="flex items-center gap-4">

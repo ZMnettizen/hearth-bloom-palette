@@ -42,7 +42,7 @@ const EcommercePreview = () => (
     </div>
 
     {/* Products */}
-    <div className="flex-1 px-6 py-5 overflow-hidden">
+    <div className="px-6 py-5 overflow-hidden">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-xs uppercase tracking-[0.2em] font-semibold">Trending Now</h3>
         <span className="text-[10px] uppercase tracking-widest text-[#999] cursor-pointer">View All →</span>

@@ -12,7 +12,7 @@ const RestaurantPreview = () => (
     </nav>
 
     {/* Hero */}
-    <div className="flex-1 relative flex items-center justify-center overflow-hidden">
+    <div className="relative flex items-center justify-center overflow-hidden py-24">
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{

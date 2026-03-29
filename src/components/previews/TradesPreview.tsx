@@ -28,7 +28,7 @@ const TradesPreview = () => (
     </nav>
 
     {/* Hero */}
-    <div className="flex-1 relative flex items-center" style={{ background: "linear-gradient(135deg, #0d47a1 0%, #1565c0 60%, #0d47a1 100%)" }}>
+    <div className="relative flex items-center py-24" style={{ background: "linear-gradient(135deg, #0d47a1 0%, #1565c0 60%, #0d47a1 100%)" }}>
       <div className="px-8 md:px-12 max-w-lg relative z-10">
         <div className="flex items-center gap-2 mb-3">
           <Shield size={14} className="text-[#ff6f00]" />

@@ -17,7 +17,7 @@ const HeroGrid = () => {
   return (
     <>
       <section id="projects" className="relative">
-        <div className="grid grid-cols-1 md:grid-cols-3 h-auto md:h-[85vh] max-w-[1280px] min-w-0 mx-auto">
+        <div className="flex flex-col max-w-[1280px] min-w-0 mx-auto">
           {projects.map((p, i) => (
             <motion.div
               key={p.title}

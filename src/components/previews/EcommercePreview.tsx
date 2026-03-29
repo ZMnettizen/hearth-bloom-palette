@@ -8,7 +8,7 @@ const products = [
 ];
 
 const EcommercePreview = () => (
-  <div className="w-full h-full bg-[#faf9f7] text-[#2a2a2a] overflow-hidden flex flex-col" style={{ fontFamily: "'Helvetica Neue', sans-serif" }}>
+  <div className="w-full bg-[#faf9f7] text-[#2a2a2a] overflow-hidden flex flex-col" style={{ fontFamily: "'Helvetica Neue', sans-serif" }}>
     {/* Top bar */}
     <div className="bg-[#2a2a2a] text-white text-[10px] text-center py-1.5 tracking-widest uppercase">
       Free shipping on orders over $150
@@ -42,7 +42,7 @@ const EcommercePreview = () => (
     </div>
 
     {/* Products */}
-    <div className="flex-1 px-6 py-5 overflow-hidden">
+    <div className="px-6 py-5 overflow-hidden">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-xs uppercase tracking-[0.2em] font-semibold">Trending Now</h3>
         <span className="text-[10px] uppercase tracking-widest text-[#999] cursor-pointer">View All →</span>

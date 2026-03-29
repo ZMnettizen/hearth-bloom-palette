@@ -1,5 +1,5 @@
 const RestaurantPreview = () => (
-  <div className="w-full h-full bg-[#1a1a1a] text-white overflow-hidden flex flex-col" style={{ fontFamily: "'Georgia', serif" }}>
+  <div className="w-full bg-[#1a1a1a] text-white overflow-hidden flex flex-col" style={{ fontFamily: "'Georgia', serif" }}>
     {/* Nav */}
     <nav className="flex items-center justify-between px-6 py-4 bg-[#111]">
       <span className="text-xl font-bold tracking-wider text-[#d4a853]">LA MAISON</span>
@@ -12,7 +12,7 @@ const RestaurantPreview = () => (
     </nav>
 
     {/* Hero */}
-    <div className="flex-1 relative flex items-center justify-center overflow-hidden">
+    <div className="relative flex items-center justify-center overflow-hidden py-24">
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{

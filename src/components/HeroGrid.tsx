@@ -21,14 +21,14 @@ const HeroGrid = () => {
           {projects.map((p, i) => (
             <motion.div
               key={p.title}
-              className="relative overflow-hidden cursor-pointer group h-[60vh]"
+              className="relative overflow-hidden cursor-pointer group"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: i * 0.2, duration: 0.6 }}
               onClick={() => setSelected(i)}
             >
               {/* Live mini preview */}
-              <div className="w-full h-full pointer-events-none scale-[1.15] origin-top">
+              <div className="w-full pointer-events-none">
                 <p.Preview />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/10 to-transparent group-hover:from-foreground/70 group-hover:via-foreground/20 transition-all duration-300" />

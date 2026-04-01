@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Hero = () => {
+  const navigate = useNavigate();
+
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -30,7 +33,7 @@ const Hero = () => {
             <Button
               size="lg"
               className="font-body font-semibold text-base px-8"
-              onClick={() => scrollTo("work")}
+              onClick={() => navigate("/work")}
             >
               View Our Work
               <ArrowRight size={18} className="ml-2" />

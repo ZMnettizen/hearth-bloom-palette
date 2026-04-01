@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -6,20 +7,45 @@ const navItems = ["Work", "About", "Services", "Process", "Contact"];
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleClick = (item: string) => {
     setOpen(false);
     const id = item.toLowerCase().replace(/\s+/g, "-");
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+
+    if (id === "work") {
+      navigate("/work");
+      return;
+    }
+
+    if (location.pathname !== "/") {
+      navigate(`/#${id}`);
+    } else {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleGetStarted = () => {
+    setOpen(false);
+    if (location.pathname !== "/") {
+      navigate("/#contact");
+    } else {
+      const el = document.getElementById("contact");
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
     <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-16">
-        <span className="font-display text-xl font-bold text-foreground tracking-tight">
+        <button
+          onClick={() => navigate("/")}
+          className="font-display text-xl font-bold text-foreground tracking-tight"
+        >
           SionSite
-        </span>
+        </button>
 
         <button
           className="md:hidden text-foreground"
@@ -46,7 +72,7 @@ const Header = () => {
           <Button
             size="sm"
             className="font-body font-semibold text-sm mt-2 md:mt-0"
-            onClick={() => handleClick("Contact")}
+            onClick={handleGetStarted}
           >
             Get Started
           </Button>

@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { ExternalLink, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import MzansiMeatsPreview from "./previews/MzansiMeatsPreview";
 import EcommercePreview from "./previews/EcommercePreview";
 import NonnasPreview from "./previews/NonnasPreview";
@@ -29,6 +31,8 @@ const projects = [
 ];
 
 const PreviewShowcase = () => {
+  const navigate = useNavigate();
+
   const handleClick = (url: string | null) => {
     if (url) window.open(url, "_blank", "noopener,noreferrer");
   };
@@ -74,14 +78,12 @@ const PreviewShowcase = () => {
                     isCenter ? "h-[420px] lg:h-[520px]" : "h-[380px] lg:h-[480px]"
                   }`}
                 >
-                  {/* Preview content */}
                   <div className="w-full h-full overflow-hidden">
                     <div className="transform scale-[1] origin-top">
                       <p.Preview />
                     </div>
                   </div>
 
-                  {/* Hover overlay */}
                   <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/60 transition-all duration-300 flex items-center justify-center">
                     <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center">
                       {p.url && (
@@ -94,7 +96,6 @@ const PreviewShowcase = () => {
                   </div>
                 </div>
 
-                {/* Label below card */}
                 <div className="mt-4 text-center">
                   <p className="font-body text-xs font-semibold uppercase tracking-widest text-primary mb-1">
                     {p.category}
@@ -110,6 +111,24 @@ const PreviewShowcase = () => {
             );
           })}
         </div>
+
+        {/* View All Work Button */}
+        <motion.div
+          className="text-center mt-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          <Button
+            size="lg"
+            className="font-body font-semibold text-base"
+            onClick={() => navigate("/work")}
+          >
+            View All Our Work
+            <ArrowRight size={18} className="ml-2" />
+          </Button>
+        </motion.div>
       </div>
     </section>
   );

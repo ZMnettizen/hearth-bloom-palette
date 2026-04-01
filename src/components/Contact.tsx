@@ -16,7 +16,10 @@ const Contact = () => {
       toast({ title: "Please fill in all fields", variant: "destructive" });
       return;
     }
-    toast({ title: "Message sent!", description: "We'll get back to you soon." });
+    const subject = encodeURIComponent(`New enquiry from ${form.name} via SionSite`);
+    const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`);
+    window.location.href = `mailto:zionmpanza@icloud.com?subject=${subject}&body=${body}`;
+    toast({ title: "Opening your email client…", description: "Your message is pre-filled and ready to send." });
     setForm({ name: "", email: "", message: "" });
   };
 

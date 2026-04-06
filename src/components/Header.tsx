@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const navItems = ["Work", "About", "Services", "Process", "Contact"];
+const navItems = ["Services", "Portfolio", "Contact"];
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -14,7 +14,11 @@ const Header = () => {
     setOpen(false);
     const id = item.toLowerCase().replace(/\s+/g, "-");
 
-    if (id === "work") {
+    if (id === "services") {
+      navigate("/services");
+      return;
+    }
+    if (id === "portfolio") {
       navigate("/work");
       return;
     }
@@ -38,7 +42,7 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
+    <header className="sticky top-0 z-50 bg-background/60 backdrop-blur-2xl border-b border-border/40">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-16">
         <button
           onClick={() => navigate("/")}
@@ -58,7 +62,7 @@ const Header = () => {
         <nav
           className={`${
             open ? "flex" : "hidden"
-          } md:flex flex-col md:flex-row absolute md:static top-full left-0 w-full md:w-auto bg-background md:bg-transparent gap-1 md:gap-8 p-6 md:p-0 border-b md:border-0 border-border md:items-center`}
+          } md:flex flex-col md:flex-row absolute md:static top-full left-0 w-full md:w-auto bg-background/95 backdrop-blur-xl md:bg-transparent gap-1 md:gap-8 p-6 md:p-0 border-b md:border-0 border-border/40 md:items-center`}
         >
           {navItems.map((item) => (
             <button
@@ -71,7 +75,7 @@ const Header = () => {
           ))}
           <Button
             size="sm"
-            className="font-body font-semibold text-sm mt-2 md:mt-0"
+            className="font-body font-semibold text-sm mt-2 md:mt-0 rounded-lg"
             onClick={handleGetStarted}
           >
             Get Started

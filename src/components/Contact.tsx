@@ -33,26 +33,25 @@ const Contact = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="font-body text-sm font-semibold uppercase tracking-widest text-primary mb-3">
+          <p className="font-body text-sm font-semibold uppercase tracking-[0.3em] text-primary mb-4">
             Contact Us
           </p>
           <h2 className="font-display text-3xl lg:text-5xl font-bold text-foreground mb-4">
             Get In Touch
           </h2>
           <p className="font-body text-muted-foreground max-w-xl mx-auto">
-            Ready to start your project? Reach out and let's talk.
+            Ready to create something extraordinary? Let's talk.
           </p>
         </motion.div>
 
         <motion.div
-          className="max-w-4xl mx-auto"
+          className="max-w-4xl mx-auto glass rounded-3xl p-8 lg:p-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
-            {/* Contact Info */}
             <div className="lg:col-span-2 space-y-8">
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
@@ -85,13 +84,12 @@ const Contact = () => {
               </a>
             </div>
 
-            {/* Contact Form */}
             <form onSubmit={handleSubmit} className="lg:col-span-3 space-y-5">
               <Input
                 placeholder="Your Name"
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
-                className="font-body h-12 rounded-xl"
+                className="font-body h-12 rounded-xl bg-muted/50 border-border/50"
                 maxLength={100}
               />
               <Input
@@ -99,17 +97,17 @@ const Contact = () => {
                 placeholder="Your Email"
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
-                className="font-body h-12 rounded-xl"
+                className="font-body h-12 rounded-xl bg-muted/50 border-border/50"
                 maxLength={255}
               />
               <Textarea
                 placeholder="Tell us about your project..."
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
-                className="font-body min-h-[140px] rounded-xl"
+                className="font-body min-h-[140px] rounded-xl bg-muted/50 border-border/50"
                 maxLength={1000}
               />
-              <Button type="submit" size="lg" className="w-full font-body font-bold text-base rounded-xl">
+              <Button type="submit" size="lg" className="w-full font-body font-bold text-base rounded-xl glow-gold">
                 Send Message
                 <Send size={16} className="ml-2" />
               </Button>

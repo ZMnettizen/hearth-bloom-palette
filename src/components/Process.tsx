@@ -1,30 +1,30 @@
 import { motion } from "framer-motion";
-import { Lightbulb, Palette, Code2, Rocket } from "lucide-react";
+import { Search, Palette, MessageSquare, Rocket } from "lucide-react";
 
 const steps = [
   {
-    icon: Lightbulb,
+    icon: Search,
     step: "01",
-    title: "Plan",
-    desc: "We learn about your business, goals, and audience to create a clear project roadmap.",
+    title: "Discovery",
+    desc: "Understanding your brand, audience, and goals to define the vision.",
   },
   {
     icon: Palette,
     step: "02",
-    title: "Design",
-    desc: "We craft a custom design that reflects your brand and speaks to your customers.",
+    title: "Design Development",
+    desc: "Crafting a unique, high-end interface that reflects your restaurant's character.",
   },
   {
-    icon: Code2,
+    icon: MessageSquare,
     step: "03",
-    title: "Build",
-    desc: "We develop your site with clean code, fast performance, and mobile responsiveness.",
+    title: "Review",
+    desc: "Refinement through client feedback until every detail is perfect.",
   },
   {
     icon: Rocket,
     step: "04",
     title: "Launch",
-    desc: "We deploy your website, test everything, and provide ongoing support.",
+    desc: "Go live with full optimization, testing, and ongoing support.",
   },
 ];
 
@@ -38,14 +38,14 @@ const Process = () => (
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <p className="font-body text-sm font-semibold uppercase tracking-widest text-primary mb-3">
+        <p className="font-body text-sm font-semibold uppercase tracking-[0.3em] text-primary mb-4">
           How It Works
         </p>
         <h2 className="font-display text-3xl lg:text-5xl font-bold text-foreground mb-4">
           Our Process
         </h2>
         <p className="font-body text-muted-foreground max-w-xl mx-auto">
-          A simple, transparent workflow from idea to launch.
+          A refined workflow designed around precision and perfection.
         </p>
       </motion.div>
 
@@ -53,29 +53,24 @@ const Process = () => (
         {steps.map((s, i) => (
           <motion.div
             key={s.title}
-            className="relative text-center"
+            className="relative glass rounded-2xl p-8 text-center hover:glow-gold transition-all duration-300 group"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.12, duration: 0.5 }}
           >
-            <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-5">
+            <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-5 group-hover:bg-primary/20 transition-colors">
               <s.icon className="text-primary" size={28} />
             </div>
             <p className="font-body text-xs font-bold uppercase tracking-widest text-primary mb-2">
               Step {s.step}
             </p>
-            <h3 className="font-display text-xl font-bold text-foreground mb-2">
+            <h3 className="font-display text-xl font-bold text-foreground mb-3">
               {s.title}
             </h3>
             <p className="font-body text-sm text-muted-foreground leading-relaxed">
               {s.desc}
             </p>
-
-            {/* Connector line (hidden on last item and mobile) */}
-            {i < steps.length - 1 && (
-              <div className="hidden lg:block absolute top-8 left-[calc(50%+40px)] w-[calc(100%-80px)] h-px bg-border" />
-            )}
           </motion.div>
         ))}
       </div>

@@ -1,10 +1,9 @@
 import { useNavigate } from "react-router-dom";
 
 const footerLinks = [
-  { label: "Work", id: "work", isPage: true },
-  { label: "About", id: "about", isPage: false },
-  { label: "Services", id: "services", isPage: false },
-  { label: "Process", id: "process", isPage: false },
+  { label: "Home", id: "/", isPage: true },
+  { label: "Services", id: "services", isPage: true },
+  { label: "Portfolio", id: "work", isPage: true },
   { label: "Contact", id: "contact", isPage: false },
 ];
 
@@ -13,7 +12,7 @@ const Footer = () => {
 
   const handleNav = (id: string, isPage: boolean) => {
     if (isPage) {
-      navigate(`/${id}`);
+      navigate(id === "/" ? "/" : `/${id}`);
     } else {
       const el = document.getElementById(id);
       if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -21,7 +20,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="border-t border-border py-12">
+    <footer className="border-t border-border/40 py-12">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <button

@@ -38,7 +38,7 @@ const PreviewShowcase = () => {
   };
 
   return (
-    <section id="work" className="py-20 lg:py-28 bg-secondary">
+    <section id="portfolio" className="py-20 lg:py-28">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <motion.div
           className="text-center mb-16"
@@ -47,14 +47,14 @@ const PreviewShowcase = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="font-body text-sm font-semibold uppercase tracking-widest text-primary mb-3">
+          <p className="font-body text-sm font-semibold uppercase tracking-[0.3em] text-primary mb-4">
             Our Work
           </p>
           <h2 className="font-display text-3xl lg:text-5xl font-bold text-foreground mb-4">
             Real Websites, Real Results
           </h2>
           <p className="font-body text-muted-foreground max-w-xl mx-auto">
-            See how we've helped businesses stand out online with custom-designed websites.
+            See how we've helped brands stand out with bespoke digital experiences.
           </p>
         </motion.div>
 
@@ -74,7 +74,7 @@ const PreviewShowcase = () => {
                 onClick={() => handleClick(p.url)}
               >
                 <div
-                  className={`relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 bg-card border border-border ${
+                  className={`relative overflow-hidden rounded-2xl glass border-border/30 ${
                     isCenter ? "h-[420px] lg:h-[520px]" : "h-[380px] lg:h-[480px]"
                   }`}
                 >
@@ -84,10 +84,10 @@ const PreviewShowcase = () => {
                     </div>
                   </div>
 
-                  <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/60 transition-all duration-300 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-background/0 group-hover:bg-background/70 transition-all duration-300 flex items-center justify-center">
                     <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center">
                       {p.url && (
-                        <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-body font-semibold text-sm px-6 py-3 rounded-lg shadow-lg">
+                        <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-body font-semibold text-sm px-6 py-3 rounded-lg">
                           View Live Site
                           <ExternalLink size={16} />
                         </div>
@@ -112,7 +112,6 @@ const PreviewShowcase = () => {
           })}
         </div>
 
-        {/* View All Work Button */}
         <motion.div
           className="text-center mt-16"
           initial={{ opacity: 0, y: 20 }}
@@ -122,7 +121,7 @@ const PreviewShowcase = () => {
         >
           <Button
             size="lg"
-            className="font-body font-semibold text-base"
+            className="font-body font-semibold text-base rounded-xl"
             onClick={() => navigate("/work")}
           >
             View All Our Work

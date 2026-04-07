@@ -2,8 +2,9 @@ import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Logo from "@/components/Logo";
 
-const navItems = ["Services", "Portfolio", "Contact"];
+const navItems = ["Portfolio", "Services", "Contact"];
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -12,14 +13,18 @@ const Header = () => {
 
   const handleClick = (item: string) => {
     setOpen(false);
-    const id = item.toLowerCase().replace(/\s+/g, "-");
+    const id = item.toLowerCase();
 
+    if (id === "portfolio") {
+      navigate("/work");
+      return;
+    }
     if (id === "services") {
       navigate("/services");
       return;
     }
-    if (id === "portfolio") {
-      navigate("/work");
+    if (id === "contact") {
+      navigate("/contact");
       return;
     }
 
@@ -33,22 +38,14 @@ const Header = () => {
 
   const handleGetStarted = () => {
     setOpen(false);
-    if (location.pathname !== "/") {
-      navigate("/#contact");
-    } else {
-      const el = document.getElementById("contact");
-      if (el) el.scrollIntoView({ behavior: "smooth" });
-    }
+    navigate("/contact");
   };
 
   return (
     <header className="sticky top-0 z-50 bg-background/60 backdrop-blur-2xl border-b border-border/40">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-16">
-        <button
-          onClick={() => navigate("/")}
-          className="font-display text-xl font-bold text-foreground tracking-tight"
-        >
-          SionSite
+        <button onClick={() => navigate("/")}>
+          <Logo />
         </button>
 
         <button

@@ -11,20 +11,24 @@ const Identity = () => (
           transition={{ duration: 0.7 }}
         >
           <p className="font-body text-sm font-semibold uppercase tracking-[0.3em] text-primary mb-4">
-            Our Identity
+            About SionSite
           </p>
           <h2 className="font-display text-3xl lg:text-5xl font-bold text-foreground mb-6 leading-tight">
-            We design for experience, not just appearance.
+            Your Vision, Crafted Into a Premium Online Presence
           </h2>
           <div className="space-y-5">
             <p className="font-body text-muted-foreground leading-relaxed text-lg">
-              We partner with restaurants to craft immersive digital experiences that reflect their atmosphere, elevate their brand, and convert visitors into guests.
+              At SionSite, we believe every business deserves a website that truly represents who they are. We work one-on-one with each client to understand their vision and bring it to life with a high-end, custom-built website.
+            </p>
+            <p className="font-body text-muted-foreground leading-relaxed">
+              Whether you're a restaurant looking to fill tables, a tradesperson building credibility, or a small business ready to grow — we design websites that help customers trust you from the first click.
             </p>
             <div className="space-y-3 pt-2">
               {[
-                "Focused exclusively on fine dining restaurants",
-                "Emphasis on luxury branding & atmosphere",
-                "Tailored, non-template builds — every project is unique",
+                "Dedicated one-on-one collaboration with every client",
+                "Focused on restaurants, trades & small businesses",
+                "Every build is custom — never a template",
+                "Helping your business present itself professionally online",
               ].map((point) => (
                 <div key={point} className="flex items-start gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 flex-shrink-0" />
@@ -42,8 +46,8 @@ const Identity = () => (
           transition={{ duration: 0.7 }}
           className="glass rounded-3xl p-10 lg:p-14 glow-gold"
         >
-          <p className="font-display text-2xl lg:text-3xl font-bold text-foreground leading-snug mb-6">
-            "Every plate tells a story. Every website should too."
+          <p className="font-display text-2xl lg:text-3xl font-bold text-foreground leading-snug mb-8">
+            "We don't just build websites — we build the digital face of your business."
           </p>
           <div className="grid grid-cols-2 gap-6">
             {[

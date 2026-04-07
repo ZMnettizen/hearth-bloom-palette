@@ -6,14 +6,8 @@ import { Button } from "@/components/ui/button";
 const Hero = () => {
   const navigate = useNavigate();
 
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-      {/* Ambient background effects */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/30" />
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-primary/3 rounded-full blur-3xl" />
@@ -31,15 +25,15 @@ const Hero = () => {
             transition={{ delay: 0.3, duration: 0.8 }}
             className="font-body text-sm font-semibold uppercase tracking-[0.3em] text-primary"
           >
-            The New Creation. At Your Table.
+            Premium Web Design Agency
           </motion.p>
 
           <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-foreground leading-[1.05] text-balance">
-            Luxury Websites for Fine Dining Experiences
+            High-End Websites Designed to Elevate Your Brand and Drive Results
           </h1>
 
           <p className="font-body text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            We design digital spaces that feel as refined as the tables you serve.
+            We work one-on-one with restaurants, trades, and small businesses to bring your ideal vision to life — with a premium website that wins customers.
           </p>
 
           <motion.div
@@ -51,16 +45,16 @@ const Hero = () => {
             <Button
               size="lg"
               className="font-body font-semibold text-base px-10 py-6 rounded-xl glow-gold"
-              onClick={() => navigate("/work")}
+              onClick={() => navigate("/services")}
             >
-              View Our Work
+              View Services
               <ArrowRight size={18} className="ml-2" />
             </Button>
             <Button
               variant="outline"
               size="lg"
               className="font-body font-semibold text-base px-10 py-6 rounded-xl border-border/60 hover:border-primary/40"
-              onClick={() => scrollTo("contact")}
+              onClick={() => navigate("/contact")}
             >
               Get Started
             </Button>

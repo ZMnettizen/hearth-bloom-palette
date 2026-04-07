@@ -1,6 +1,17 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { Check, Star, ArrowRight, Search, Palette, MessageSquare, Rocket, Users, Building2, Zap, Settings } from "lucide-react";
+import {
+  ArrowLeft,
+  Check,
+  TrendingUp,
+  Users,
+  Eye,
+  CalendarCheck,
+  Search,
+  Palette,
+  MessageSquare,
+  Rocket,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -8,216 +19,187 @@ import Footer from "@/components/Footer";
 const tiers = [
   {
     name: "Essential Presence",
+    subtitle: "Quick-Start Template",
     price: "R2 499",
+    priceNote: "Once-off",
+    description: "Get online fast with a professionally designed pre-built template, customized with your branding and content.",
     popular: false,
-    tagline: "Entry into premium digital presence",
+    label: null,
     features: [
-      "Custom non-template website",
+      "Pre-designed premium template",
+      "Customized with your branding",
       "Domain setup",
       "Mobile responsive design",
       "SSL & HTTPS security",
       "Fast loading speeds",
+      "Basic SEO setup",
     ],
   },
   {
-    name: "Refined Experience",
+    name: "Custom Website",
+    subtitle: "One-on-One Collaboration",
     price: "R5 999",
+    priceNote: "Once-off",
+    description: "A fully custom-built website designed from scratch with dedicated one-on-one collaboration to bring your exact vision to life.",
     popular: true,
-    tagline: "Designed for growing restaurants",
+    label: "Most Popular",
     features: [
       "Everything in Essential, plus:",
+      "Fully custom UI/UX design",
+      "One-on-one design process",
       "Advanced SEO optimization",
-      "Hosting included",
+      "Hosting included (1 year)",
       "Branding consistency across pages",
       "Email client integration",
-      "Monthly updates & maintenance",
+      "Content strategy guidance",
     ],
   },
   {
-    name: "Signature Digital Presence",
+    name: "Premium Ongoing",
+    subtitle: "Continuous Growth Partner",
     price: "R8 999",
+    priceNote: "per month",
+    description: "For businesses that demand excellence — ongoing design improvements, priority support, and continuous optimization.",
     popular: false,
-    tagline: "For establishments that demand excellence",
+    label: "Best Value",
     features: [
-      "Everything in Refined, plus:",
-      "Fully custom luxury UI/UX design",
-      "Conversion strategy (booking-focused)",
-      "Priority support",
-      "Continuous improvements",
-      "Dedicated one-on-one collaboration",
+      "Everything in Custom, plus:",
+      "Continuous design improvements",
+      "Monthly content updates",
+      "Priority support & fast response",
+      "Advanced performance optimization",
+      "Ongoing SEO improvements",
+      "Hosting & uptime management",
+      "Dedicated design partnership",
     ],
   },
 ];
 
-const trustItems = [
-  { icon: Users, text: "Private, one-on-one design process" },
-  { icon: Building2, text: "Built for high-end hospitality brands" },
-  { icon: Zap, text: "Performance, speed, and SEO optimized" },
-  { icon: Settings, text: "Fully managed from concept to launch" },
+const outcomes = [
+  {
+    icon: TrendingUp,
+    title: "Increased Conversions",
+    desc: "Websites designed to turn visitors into paying customers, bookings, and leads.",
+  },
+  {
+    icon: Eye,
+    title: "Better Brand Perception",
+    desc: "A premium online presence that makes customers trust and choose your business.",
+  },
+  {
+    icon: CalendarCheck,
+    title: "More Bookings",
+    desc: "Optimized layouts and CTAs that drive reservations, inquiries, and sales.",
+  },
+  {
+    icon: Users,
+    title: "Professional Credibility",
+    desc: "Stand out from competitors with a website that reflects your true quality.",
+  },
 ];
 
-const processSteps = [
-  { icon: Search, title: "Discovery", desc: "Understanding your brand, audience, and vision." },
-  { icon: Palette, title: "Design Development", desc: "Crafting a bespoke, high-end interface." },
-  { icon: MessageSquare, title: "Review", desc: "Refinement through collaborative feedback." },
-  { icon: Rocket, title: "Launch", desc: "Go live with full optimization and support." },
-];
-
-const whyMonthly = [
-  "Continuous SEO improvements",
-  "Ongoing maintenance & security",
-  "Hosting + uptime management",
-  "Content updates on request",
-  "Performance optimization",
-  "Dedicated priority support",
+const steps = [
+  { icon: Search, step: "01", title: "Discovery", desc: "Understanding your brand, audience, and goals." },
+  { icon: Palette, step: "02", title: "Design", desc: "Crafting a unique, high-end interface." },
+  { icon: MessageSquare, step: "03", title: "Review", desc: "Refinement with your feedback until perfect." },
+  { icon: Rocket, step: "04", title: "Launch", desc: "Go live with full optimization and support." },
 ];
 
 const Services = () => {
   const navigate = useNavigate();
 
-  const scrollToPricing = () => {
-    const el = document.getElementById("pricing");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+  const handlePurchase = (tierName: string) => {
+    const subject = encodeURIComponent(`Inquiry: ${tierName} — SionSite`);
+    const body = encodeURIComponent(`Hi Zion,\n\nI'm interested in the "${tierName}" package.\n\nPlease share more details.\n\nThanks!`);
+    window.location.href = `mailto:zionmpanza@icloud.com?subject=${subject}&body=${body}`;
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background theme-white">
       <Header />
       <main>
-        {/* ── Hero ── */}
-        <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-muted/20" />
-          <div className="absolute top-1/3 left-1/3 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px]" />
-          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-primary/3 rounded-full blur-[100px]" />
-
-          <div className="relative max-w-4xl mx-auto px-6 lg:px-12 text-center z-10">
+        {/* Hero */}
+        <section className="py-20 lg:py-28 bg-gradient-to-b from-secondary to-background">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-              className="space-y-8"
+              transition={{ duration: 0.8 }}
+              className="text-center space-y-6"
             >
-              <p className="font-body text-sm font-semibold uppercase tracking-[0.35em] text-primary">
-                The New Creation. At Your Table.
-              </p>
-              <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-foreground leading-[1.05] text-balance">
-                Digital Experiences Worthy of Your Table
-              </h1>
-              <p className="font-body text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                We don't build websites. We design presence.
-              </p>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.7 }}
+              <button
+                onClick={() => navigate("/")}
+                className="inline-flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-foreground transition-colors mb-4"
               >
-                <Button
-                  size="lg"
-                  className="font-body font-semibold text-base px-10 py-6 rounded-xl glow-gold"
-                  onClick={scrollToPricing}
-                >
-                  Choose Your Experience
-                  <ArrowRight size={18} className="ml-2" />
-                </Button>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* ── Trust Strip ── */}
-        <section className="py-20 lg:py-24">
-          <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {trustItems.map((item, i) => (
-                <motion.div
-                  key={item.text}
-                  className="glass rounded-2xl p-7 text-center hover:glow-gold transition-all duration-300"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1, duration: 0.5 }}
-                >
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                    <item.icon className="text-primary" size={22} />
-                  </div>
-                  <p className="font-body text-sm text-foreground/90 leading-relaxed">
-                    {item.text}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-            <motion.p
-              className="text-center mt-10 font-body text-sm text-muted-foreground italic tracking-wide"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-            >
-              Every project is crafted — never templated.
-            </motion.p>
-          </div>
-        </section>
-
-        {/* ── Pricing ── */}
-        <section id="pricing" className="py-20 lg:py-28">
-          <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <motion.div
-              className="text-center mb-16"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <p className="font-body text-sm font-semibold uppercase tracking-[0.3em] text-primary mb-4">
-                Our Packages
+                <ArrowLeft size={16} />
+                Back to Home
+              </button>
+              <p className="font-body text-sm font-semibold uppercase tracking-widest text-primary">
+                Our Services
               </p>
-              <h2 className="font-display text-3xl lg:text-5xl font-bold text-foreground">
-                Investment in Excellence
-              </h2>
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-[1.1] text-balance">
+                Solutions That Deliver Real Results
+              </h1>
+              <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                From quick-start templates to fully custom builds and ongoing partnerships — find the right fit for your business.
+              </p>
             </motion.div>
+          </div>
+        </section>
 
+        {/* Pricing */}
+        <section className="py-20 lg:py-28">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
               {tiers.map((tier, i) => (
                 <motion.div
                   key={tier.name}
-                  className={`relative glass rounded-3xl p-8 lg:p-10 flex flex-col transition-all duration-300 ${
+                  className={`relative rounded-3xl p-8 border transition-all duration-300 flex flex-col ${
                     tier.popular
-                      ? "glow-gold border-primary/30 md:scale-105 md:z-10"
-                      : "hover:glow-gold"
+                      ? "bg-primary text-primary-foreground border-primary glow-blue md:scale-105 md:z-10 shadow-2xl"
+                      : "bg-card border-border hover:shadow-xl hover:border-primary/30"
                   }`}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.15, duration: 0.6 }}
+                  transition={{ delay: i * 0.1, duration: 0.6 }}
                 >
-                  {tier.popular && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-primary text-primary-foreground font-body text-xs font-bold uppercase tracking-wider px-5 py-1.5 rounded-full">
-                      <Star size={12} /> Most Popular
+                  {tier.label && (
+                    <div className={`absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-body font-bold uppercase tracking-wider ${
+                      tier.popular ? "bg-background text-foreground" : "bg-primary text-primary-foreground"
+                    }`}>
+                      {tier.label}
                     </div>
                   )}
 
-                  <h3 className="font-display text-2xl font-bold text-foreground mb-1">
-                    {tier.name}
-                  </h3>
-                  <p className="font-body text-xs text-primary/80 italic mb-5">
-                    {tier.tagline}
-                  </p>
+                  <div className="mb-6">
+                    <h3 className={`font-display text-2xl font-bold mb-1 ${tier.popular ? "text-primary-foreground" : "text-foreground"}`}>
+                      {tier.name}
+                    </h3>
+                    <p className={`font-body text-sm ${tier.popular ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
+                      {tier.subtitle}
+                    </p>
+                  </div>
 
-                  <div className="mb-7">
-                    <span className="font-display text-4xl font-bold text-primary">
+                  <div className="mb-6">
+                    <span className={`font-display text-4xl font-bold ${tier.popular ? "text-primary-foreground" : "text-foreground"}`}>
                       {tier.price}
                     </span>
-                    <span className="font-body text-sm text-muted-foreground ml-2">
-                      monthly or once-off
+                    <span className={`font-body text-sm ml-2 ${tier.popular ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
+                      {tier.priceNote}
                     </span>
                   </div>
 
-                  <ul className="space-y-3 mb-8 flex-grow">
-                    {tier.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-3">
-                        <Check size={16} className="text-primary mt-0.5 flex-shrink-0" />
-                        <span className="font-body text-sm text-foreground/80">
-                          {feature}
+                  <p className={`font-body text-sm leading-relaxed mb-8 ${tier.popular ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
+                    {tier.description}
+                  </p>
+
+                  <ul className="space-y-3 mb-8 flex-1">
+                    {tier.features.map((f) => (
+                      <li key={f} className="flex items-start gap-3">
+                        <Check size={16} className={`mt-0.5 flex-shrink-0 ${tier.popular ? "text-primary-foreground" : "text-primary"}`} />
+                        <span className={`font-body text-sm ${tier.popular ? "text-primary-foreground/90" : "text-foreground/80"}`}>
+                          {f}
                         </span>
                       </li>
                     ))}
@@ -225,11 +207,9 @@ const Services = () => {
 
                   <Button
                     size="lg"
-                    variant={tier.popular ? "default" : "outline"}
-                    className={`w-full font-body font-bold text-base rounded-xl ${
-                      tier.popular ? "glow-gold" : "border-border/60 hover:border-primary/40"
-                    }`}
-                    onClick={() => navigate("/#contact")}
+                    variant={tier.popular ? "secondary" : "default"}
+                    className="w-full font-body font-bold text-base rounded-xl"
+                    onClick={() => handlePurchase(tier.name)}
                   >
                     Get Started
                   </Button>
@@ -239,49 +219,49 @@ const Services = () => {
           </div>
         </section>
 
-        {/* ── Why Monthly ── */}
-        <section className="py-20 lg:py-28">
-          <div className="max-w-5xl mx-auto px-6 lg:px-12">
+        {/* Outcomes */}
+        <section className="py-20 lg:py-28 bg-secondary/50">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <motion.div
-              className="glass-strong rounded-3xl p-10 lg:p-16"
+              className="text-center mb-16"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                  <p className="font-body text-sm font-semibold uppercase tracking-[0.3em] text-primary mb-4">
-                    Transparent Value
-                  </p>
-                  <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-4">
-                    Why Clients Stay With Us
-                  </h2>
-                  <p className="font-body text-muted-foreground leading-relaxed">
-                    Your website is a living asset — not a one-time deliverable. Our monthly plans ensure it stays fast, secure, and continuously optimized so you can focus entirely on your guests.
-                  </p>
-                </div>
-                <ul className="space-y-4">
-                  {whyMonthly.map((item, i) => (
-                    <motion.li
-                      key={item}
-                      className="flex items-center gap-3"
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.08, duration: 0.4 }}
-                    >
-                      <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0" />
-                      <span className="font-body text-foreground/85">{item}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-              </div>
+              <p className="font-body text-sm font-semibold uppercase tracking-[0.3em] text-primary mb-4">
+                Results That Matter
+              </p>
+              <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-4">
+                What You Actually Get
+              </h2>
+              <p className="font-body text-muted-foreground max-w-lg mx-auto">
+                It's not just about a website — it's about real business outcomes.
+              </p>
             </motion.div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {outcomes.map((o, i) => (
+                <motion.div
+                  key={o.title}
+                  className="bg-card rounded-2xl p-8 text-center border border-border hover:shadow-xl hover:border-primary/20 transition-all duration-300 group"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1, duration: 0.5 }}
+                >
+                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-5 group-hover:bg-primary/20 transition-colors">
+                    <o.icon className="text-primary" size={26} />
+                  </div>
+                  <h3 className="font-display text-lg font-bold text-foreground mb-2">{o.title}</h3>
+                  <p className="font-body text-sm text-muted-foreground leading-relaxed">{o.desc}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </section>
 
-        {/* ── Process ── */}
+        {/* Process */}
         <section className="py-20 lg:py-28">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <motion.div
@@ -292,64 +272,56 @@ const Services = () => {
               transition={{ duration: 0.6 }}
             >
               <p className="font-body text-sm font-semibold uppercase tracking-[0.3em] text-primary mb-4">
-                How We Work
+                How It Works
               </p>
-              <h2 className="font-display text-3xl lg:text-5xl font-bold text-foreground">
+              <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground">
                 Our Process
               </h2>
             </motion.div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {processSteps.map((s, i) => (
+              {steps.map((s, i) => (
                 <motion.div
                   key={s.title}
-                  className="glass rounded-2xl p-8 text-center hover:glow-gold transition-all duration-300 group"
+                  className="bg-card rounded-2xl p-8 text-center border border-border hover:shadow-lg transition-all duration-300"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.12, duration: 0.5 }}
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-5 group-hover:bg-primary/20 transition-colors">
+                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-5">
                     <s.icon className="text-primary" size={26} />
                   </div>
                   <p className="font-body text-xs font-bold uppercase tracking-widest text-primary mb-2">
-                    0{i + 1}
+                    Step {s.step}
                   </p>
-                  <h3 className="font-display text-lg font-bold text-foreground mb-2">
-                    {s.title}
-                  </h3>
-                  <p className="font-body text-sm text-muted-foreground leading-relaxed">
-                    {s.desc}
-                  </p>
+                  <h3 className="font-display text-xl font-bold text-foreground mb-3">{s.title}</h3>
+                  <p className="font-body text-sm text-muted-foreground">{s.desc}</p>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ── Final CTA ── */}
-        <section className="py-20 lg:py-28">
-          <div className="max-w-4xl mx-auto px-6 lg:px-12 text-center">
-            <motion.div
-              className="space-y-8"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-            >
-              <h2 className="font-display text-3xl lg:text-5xl font-bold text-foreground leading-tight">
-                Your Restaurant Deserves More Than a Template
-              </h2>
-              <Button
-                size="lg"
-                className="font-body font-bold text-base px-12 py-6 rounded-xl glow-gold"
-                onClick={() => navigate("/#contact")}
-              >
-                Start Your Project
-                <ArrowRight size={18} className="ml-2" />
-              </Button>
-            </motion.div>
-          </div>
+        {/* CTA */}
+        <section className="bg-primary py-20 lg:py-28">
+          <motion.div
+            className="max-w-7xl mx-auto px-6 lg:px-12 text-center space-y-6"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <h2 className="font-display text-3xl lg:text-5xl font-bold text-primary-foreground">
+              Your Business Deserves More Than a Template
+            </h2>
+            <p className="font-body text-primary-foreground/80 max-w-xl mx-auto text-lg">
+              Let's build a website that represents your true quality and drives real results.
+            </p>
+            <Button variant="secondary" size="lg" className="font-body font-bold text-base" onClick={() => navigate("/contact")}>
+              Start Your Project
+            </Button>
+          </motion.div>
         </section>
       </main>
       <Footer />

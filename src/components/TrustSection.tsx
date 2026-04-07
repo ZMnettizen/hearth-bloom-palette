@@ -1,11 +1,29 @@
 import { motion } from "framer-motion";
-import { Shield, Search, Smartphone, Headphones } from "lucide-react";
+import { Star, MessageCircle, Shield, Users } from "lucide-react";
 
-const trustItems = [
-  { icon: Shield, title: "Secure Payments", desc: "SSL, HTTPS & PCI compliant" },
-  { icon: Search, title: "SEO Optimized", desc: "Built for visibility & rankings" },
-  { icon: Smartphone, title: "Mobile First", desc: "Flawless on every device" },
-  { icon: Headphones, title: "Ongoing Support", desc: "Dedicated post-launch care" },
+const testimonials = [
+  {
+    quote: "SionSite transformed our online presence. Bookings increased by 40% within the first month.",
+    name: "Thabo M.",
+    role: "Restaurant Owner",
+  },
+  {
+    quote: "Professional, reliable, and truly understood our vision. The website exceeded our expectations.",
+    name: "Sarah K.",
+    role: "E-Commerce Founder",
+  },
+  {
+    quote: "Working with Zion felt personal. He listened, refined, and delivered something we're proud of.",
+    name: "James P.",
+    role: "Plumbing Business Owner",
+  },
+];
+
+const trustPoints = [
+  { icon: Users, text: "One-on-one collaboration" },
+  { icon: Shield, text: "Fully managed & secure" },
+  { icon: Star, text: "Premium quality guaranteed" },
+  { icon: MessageCircle, text: "Clear communication always" },
 ];
 
 const TrustSection = () => (
@@ -19,35 +37,53 @@ const TrustSection = () => (
         transition={{ duration: 0.6 }}
       >
         <p className="font-body text-sm font-semibold uppercase tracking-[0.3em] text-primary mb-4">
-          Why Choose Us
+          Trusted by Businesses
         </p>
         <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-4">
-          Helping restaurants elevate their digital presence
+          What Our Clients Say
         </h2>
-        <p className="font-body text-muted-foreground max-w-lg mx-auto">
-          Trusted by premium hospitality brands. Fast, secure, and fully managed.
-        </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {trustItems.map((item, i) => (
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        {testimonials.map((t, i) => (
           <motion.div
-            key={item.title}
-            className="glass rounded-2xl p-8 text-center hover:glow-gold transition-all duration-300 group"
+            key={t.name}
+            className="glass rounded-2xl p-8 hover:glow-gold transition-all duration-300"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1, duration: 0.5 }}
           >
-            <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-5 group-hover:bg-primary/20 transition-colors">
-              <item.icon className="text-primary" size={26} />
+            <div className="flex gap-1 mb-4">
+              {[...Array(5)].map((_, j) => (
+                <Star key={j} size={14} className="text-primary fill-primary" />
+              ))}
             </div>
-            <h3 className="font-display text-lg font-bold text-foreground mb-2">
-              {item.title}
-            </h3>
-            <p className="font-body text-sm text-muted-foreground leading-relaxed">
-              {item.desc}
+            <p className="font-body text-foreground/80 leading-relaxed mb-6 italic">
+              "{t.quote}"
             </p>
+            <div>
+              <p className="font-body font-semibold text-foreground text-sm">{t.name}</p>
+              <p className="font-body text-xs text-muted-foreground">{t.role}</p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        {trustPoints.map((item, i) => (
+          <motion.div
+            key={item.text}
+            className="flex flex-col items-center text-center gap-3 p-6"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.08, duration: 0.5 }}
+          >
+            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+              <item.icon className="text-primary" size={22} />
+            </div>
+            <p className="font-body text-sm text-muted-foreground">{item.text}</p>
           </motion.div>
         ))}
       </div>

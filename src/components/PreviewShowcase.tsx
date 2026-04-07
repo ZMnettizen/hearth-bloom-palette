@@ -33,12 +33,8 @@ const projects = [
 const PreviewShowcase = () => {
   const navigate = useNavigate();
 
-  const handleClick = (url: string | null) => {
-    if (url) window.open(url, "_blank", "noopener,noreferrer");
-  };
-
   return (
-    <section id="portfolio" className="py-20 lg:py-28">
+    <section id="portfolio" className="py-20 lg:py-28 bg-secondary/50">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <motion.div
           className="text-center mb-16"
@@ -54,62 +50,45 @@ const PreviewShowcase = () => {
             Real Websites, Real Results
           </h2>
           <p className="font-body text-muted-foreground max-w-xl mx-auto">
-            See how we've helped brands stand out with bespoke digital experiences.
+            See how we've helped businesses stand out with bespoke digital experiences.
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-          {projects.map((p, i) => {
-            const isCenter = i === 1;
-            return (
-              <motion.div
-                key={p.title}
-                className={`relative group cursor-pointer ${
-                  isCenter ? "md:scale-100" : "md:scale-90 md:opacity-80 md:hover:opacity-100"
-                } transition-all duration-300`}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15, duration: 0.6 }}
-                onClick={() => handleClick(p.url)}
-              >
-                <div
-                  className={`relative overflow-hidden rounded-2xl glass border-border/30 ${
-                    isCenter ? "h-[420px] lg:h-[520px]" : "h-[380px] lg:h-[480px]"
-                  }`}
-                >
-                  <div className="w-full h-full overflow-hidden">
-                    <div className="transform scale-[1] origin-top">
-                      <p.Preview />
-                    </div>
-                  </div>
-
-                  <div className="absolute inset-0 bg-background/0 group-hover:bg-background/70 transition-all duration-300 flex items-center justify-center">
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center">
-                      {p.url && (
-                        <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-body font-semibold text-sm px-6 py-3 rounded-lg">
-                          View Live Site
-                          <ExternalLink size={16} />
-                        </div>
-                      )}
-                    </div>
+          {projects.map((p, i) => (
+            <motion.div
+              key={p.title}
+              className="relative group cursor-pointer transition-all duration-300"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.15, duration: 0.6 }}
+              onClick={() => p.url && window.open(p.url, "_blank", "noopener,noreferrer")}
+            >
+              <div className="relative overflow-hidden rounded-2xl glass border-border/30 h-[380px] lg:h-[480px]">
+                <div className="w-full h-full overflow-hidden">
+                  <p.Preview />
+                </div>
+                <div className="absolute inset-0 bg-background/0 group-hover:bg-background/70 transition-all duration-300 flex items-center justify-center">
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center">
+                    {p.url && (
+                      <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-body font-semibold text-sm px-6 py-3 rounded-lg">
+                        View Live Site
+                        <ExternalLink size={16} />
+                      </div>
+                    )}
                   </div>
                 </div>
-
-                <div className="mt-4 text-center">
-                  <p className="font-body text-xs font-semibold uppercase tracking-widest text-primary mb-1">
-                    {p.category}
-                  </p>
-                  <h3 className="font-display text-xl font-bold text-foreground">
-                    {p.title}
-                  </h3>
-                  <p className="font-body text-sm text-muted-foreground">
-                    {p.client}
-                  </p>
-                </div>
-              </motion.div>
-            );
-          })}
+              </div>
+              <div className="mt-4 text-center">
+                <p className="font-body text-xs font-semibold uppercase tracking-widest text-primary mb-1">
+                  {p.category}
+                </p>
+                <h3 className="font-display text-xl font-bold text-foreground">{p.title}</h3>
+                <p className="font-body text-sm text-muted-foreground">{p.client}</p>
+              </div>
+            </motion.div>
+          ))}
         </div>
 
         <motion.div
@@ -119,11 +98,7 @@ const PreviewShowcase = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <Button
-            size="lg"
-            className="font-body font-semibold text-base rounded-xl"
-            onClick={() => navigate("/work")}
-          >
+          <Button size="lg" className="font-body font-semibold text-base rounded-xl" onClick={() => navigate("/work")}>
             View All Our Work
             <ArrowRight size={18} className="ml-2" />
           </Button>

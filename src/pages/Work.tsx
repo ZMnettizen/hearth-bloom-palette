@@ -17,8 +17,7 @@ const projects = [
     year: "2024",
     Preview: MzansiMeatsPreview,
     url: "https://id-preview--49c8ab60-f515-48a6-bf57-013d1f778b6a.lovable.app",
-    description:
-      "A bold, conversion-focused site for a proudly South African meat supplier. Built to communicate quality, trust, and local pride — with a clean dark aesthetic that makes the product shine.",
+    description: "A bold, conversion-focused site for a proudly South African meat supplier. Built to communicate quality, trust, and local pride.",
     services: ["Brand Identity", "Web Design", "Copywriting"],
   },
   {
@@ -28,8 +27,7 @@ const projects = [
     year: "2024",
     Preview: EcommercePreview,
     url: null,
-    description:
-      "A premium fashion e-commerce experience with intuitive browsing, clean product grids, and a minimalist checkout flow designed to reduce cart abandonment and increase conversions.",
+    description: "A premium fashion e-commerce experience with intuitive browsing and a minimalist checkout flow designed to increase conversions.",
     services: ["UI/UX Design", "E-Commerce Dev", "Performance Optimisation"],
   },
   {
@@ -39,8 +37,7 @@ const projects = [
     year: "2024",
     Preview: NonnasPreview,
     url: "https://id-preview--463169f5-1fa0-449a-a7d1-dc1343a361a7.lovable.app",
-    description:
-      "An elegant restaurant site oozing Italian warmth and authenticity. Online reservations, a full menu display, and a gallery that makes guests hungry before they even arrive.",
+    description: "An elegant restaurant site with online reservations, a full menu display, and a gallery that makes guests hungry before they arrive.",
     services: ["Web Design", "Booking Integration", "Photography Direction"],
   },
   {
@@ -50,8 +47,7 @@ const projects = [
     year: "2025",
     Preview: TradesPreview,
     url: null,
-    description:
-      "A professional, high-trust website for a licensed plumbing business. Clear service listings, emergency call-to-action, and a design that builds credibility from the first click.",
+    description: "A professional, high-trust website for a licensed plumbing business with clear service listings and emergency call-to-action.",
     services: ["Web Design", "Local SEO Setup", "Lead Generation"],
   },
 ];
@@ -60,10 +56,9 @@ const Work = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background theme-grey">
       <Header />
       <main>
-        {/* Hero */}
         <section className="py-20 lg:py-28">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <motion.div
@@ -80,19 +75,18 @@ const Work = () => {
                 Back to Home
               </button>
               <p className="font-body text-sm font-semibold uppercase tracking-widest text-primary">
-                Our Work
+                Our Portfolio
               </p>
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-[1.1] text-balance">
                 Real Websites, Real Results
               </h1>
               <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                Every project we deliver is crafted to convert visitors into customers. Browse our portfolio to see the quality and care behind each build.
+                Every project is crafted to convert visitors into customers. Browse our portfolio to see the quality behind each build.
               </p>
             </motion.div>
           </div>
         </section>
 
-        {/* Projects */}
         <section className="pb-20 lg:pb-28">
           <div className="max-w-7xl mx-auto px-6 lg:px-12 space-y-24">
             {projects.map((p, i) => {
@@ -100,17 +94,15 @@ const Work = () => {
               return (
                 <motion.div
                   key={p.title}
-                  className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
-                    !isEven ? "[direction:rtl]" : ""
-                  }`}
+                  className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${!isEven ? "[direction:rtl]" : ""}`}
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.7 }}
                 >
-                  {/* Preview Card */}
                   <div className="relative [direction:ltr]">
-                    <div className="relative overflow-hidden rounded-2xl shadow-lg bg-card border border-border h-[420px] lg:h-[500px] group cursor-pointer"
+                    <div
+                      className="relative overflow-hidden rounded-2xl shadow-lg bg-card border border-border h-[420px] lg:h-[500px] group cursor-pointer"
                       onClick={() => p.url && window.open(p.url, "_blank", "noopener,noreferrer")}
                     >
                       <div className="w-full h-full overflow-hidden">
@@ -125,13 +117,11 @@ const Work = () => {
                         </div>
                       )}
                     </div>
-                    {/* Year badge */}
                     <div className="absolute -top-3 -right-3 w-14 h-14 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-body text-xs font-bold shadow-lg">
                       {p.year}
                     </div>
                   </div>
 
-                  {/* Info */}
                   <div className="space-y-5 [direction:ltr]">
                     <p className="font-body text-xs font-semibold uppercase tracking-widest text-primary">
                       {p.category}
@@ -139,40 +129,27 @@ const Work = () => {
                     <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground">
                       {p.title}
                     </h2>
-                    <p className="font-body text-sm text-muted-foreground">
-                      Client: {p.client}
-                    </p>
-                    <p className="font-body text-muted-foreground leading-relaxed">
-                      {p.description}
-                    </p>
+                    <p className="font-body text-sm text-muted-foreground">Client: {p.client}</p>
+                    <p className="font-body text-muted-foreground leading-relaxed">{p.description}</p>
                     <div>
                       <p className="font-body text-xs font-semibold uppercase tracking-wider text-foreground mb-3">
                         Services Delivered
                       </p>
                       <div className="flex flex-wrap gap-2">
                         {p.services.map((s) => (
-                          <span
-                            key={s}
-                            className="font-body text-xs px-3 py-1.5 rounded-full bg-primary/10 text-primary font-medium"
-                          >
+                          <span key={s} className="font-body text-xs px-3 py-1.5 rounded-full bg-primary/10 text-primary font-medium">
                             {s}
                           </span>
                         ))}
                       </div>
                     </div>
                     {p.url ? (
-                      <Button
-                        size="lg"
-                        className="font-body font-semibold"
-                        onClick={() => window.open(p.url!, "_blank", "noopener,noreferrer")}
-                      >
+                      <Button size="lg" className="font-body font-semibold" onClick={() => window.open(p.url!, "_blank", "noopener,noreferrer")}>
                         View Live Site
                         <ExternalLink size={16} className="ml-2" />
                       </Button>
                     ) : (
-                      <p className="font-body text-sm text-muted-foreground italic">
-                        Live preview not available for this project.
-                      </p>
+                      <p className="font-body text-sm text-muted-foreground italic">Live preview not available for this project.</p>
                     )}
                   </div>
                 </motion.div>
@@ -181,7 +158,6 @@ const Work = () => {
           </div>
         </section>
 
-        {/* CTA */}
         <section className="bg-primary py-20 lg:py-28">
           <motion.div
             className="max-w-7xl mx-auto px-6 lg:px-12 text-center space-y-6"
@@ -194,14 +170,9 @@ const Work = () => {
               Want a Website Like These?
             </h2>
             <p className="font-body text-primary-foreground/80 max-w-xl mx-auto text-lg">
-              Let's build something that makes your business stand out online. Get in touch today for a free consultation.
+              Let's build something that makes your business stand out online.
             </p>
-            <Button
-              variant="secondary"
-              size="lg"
-              className="font-body font-bold text-base"
-              onClick={() => navigate("/#contact")}
-            >
+            <Button variant="secondary" size="lg" className="font-body font-bold text-base" onClick={() => navigate("/contact")}>
               Get In Touch
             </Button>
           </motion.div>
